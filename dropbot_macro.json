@@ -1,0 +1,127 @@
+{
+    "Name": "DropBot AutoFill (FileRead Fix)",
+    "CreationDate": "2025-04-21",
+    "Commands": [
+      {
+        "Command": "store",
+        "Target": "/Users/samiksha/Desktop/DropBot/listings/001",
+        "Value": "folderPath"
+      },
+      {
+        "Command": "open",
+        "Target": "https://www.facebook.com/marketplace/create/item",
+        "Value": ""
+      },
+      {
+        "Command": "pause",
+        "Target": "3000",
+        "Value": ""
+      },
+      {
+        "Comment": "Read title via file://",
+        "Command": "executeScript",
+        "Target": "var xhr=new XMLHttpRequest();xhr.open('GET','file://'+folderPath+'/title.txt',false);xhr.send(null);return xhr.responseText;",
+        "Value": "listingTitle"
+      },
+      {
+        "Comment": "Type title",
+        "Command": "type",
+        "Target": "xpath=//input[@aria-label='Title']",
+        "Value": "${listingTitle}"
+      },
+      {
+        "Comment": "Read description via file://",
+        "Command": "executeScript",
+        "Target": "var xhr=new XMLHttpRequest();xhr.open('GET','file://'+folderPath+'/description.txt',false);xhr.send(null);return xhr.responseText;",
+        "Value": "listingDesc"
+      },
+      {
+        "Comment": "Type description",
+        "Command": "type",
+        "Target": "xpath=//textarea[@aria-label='Describe your item']",
+        "Value": "${listingDesc}"
+      },
+      {
+        "Comment": "Read price via file://",
+        "Command": "executeScript",
+        "Target": "var xhr=new XMLHttpRequest();xhr.open('GET','file://'+folderPath+'/final_price.txt',false);xhr.send(null);return xhr.responseText;",
+        "Value": "listingPrice"
+      },
+      {
+        "Comment": "Type price",
+        "Command": "type",
+        "Target": "xpath=//input[@aria-label='Price']",
+        "Value": "${listingPrice}"
+      },
+      {
+        "Comment": "Read tags via file://",
+        "Command": "executeScript",
+        "Target": "var xhr=new XMLHttpRequest();xhr.open('GET','file://'+folderPath+'/tags.txt',false);xhr.send(null);return xhr.responseText;",
+        "Value": "listingTags"
+      },
+      {
+        "Comment": "Type tags",
+        "Command": "type",
+        "Target": "xpath=//input[@aria-label='Search tags']",
+        "Value": "${listingTags}"
+      },
+      {
+        "Command": "sendKeys",
+        "Target": "xpath=//input[@aria-label='Search tags']",
+        "Value": "${KEY_ENTER}"
+      },
+      {
+        "Comment": "Select Condition = New",
+        "Command": "click",
+        "Target": "xpath=//div[contains(@aria-label,'Condition')]/descendant::span[text()='New']",
+        "Value": ""
+      },
+      {
+        "Comment": "Open Category dropdown",
+        "Command": "click",
+        "Target": "xpath=//div[text()='Category']",
+        "Value": ""
+      },
+      {
+        "Comment": "Read category via file://",
+        "Command": "executeScript",
+        "Target": "var xhr=new XMLHttpRequest();xhr.open('GET','file://'+folderPath+'/category.txt',false);xhr.send(null);return xhr.responseText;",
+        "Value": "category"
+      },
+      {
+        "Comment": "Type category",
+        "Command": "type",
+        "Target": "xpath=//input[@aria-label='Search categories']",
+        "Value": "${category}"
+      },
+      {
+        "Command": "sendKeys",
+        "Target": "xpath=//input[@aria-label='Search categories']",
+        "Value": "${KEY_ENTER}"
+      },
+      {
+        "Comment": "Select Delivery = Shipping only",
+        "Command": "click",
+        "Target": "xpath=//span[text()='Shipping only']",
+        "Value": ""
+      },
+      {
+        "Comment": "Upload up to 4 images",
+        "Command": "select",
+        "Target": "xpath=//input[@type='file']",
+        "Value": "${folderPath}/image_1.jpg\n${folderPath}/image_2.jpg\n${folderPath}/image_3.jpg\n${folderPath}/image_4.jpg"
+      },
+      {
+        "Command": "pause",
+        "Target": "1000",
+        "Value": ""
+      },
+      {
+        "Comment": "All fields filled. Click “Post” manually",
+        "Command": "pause",
+        "Target": "1000",
+        "Value": ""
+      }
+    ]
+  }
+  
