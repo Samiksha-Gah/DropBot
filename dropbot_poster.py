@@ -20,7 +20,7 @@ import time
 import webbrowser
 
 # === CONFIGURATION ===
-DOBBY_API_KEY  = "fw_3Zb9GtEVuqZWPgQ7rxBqcmNn"  # ← your Fireworks key
+DOBBY_API_KEY  = ""  # ← your Fireworks key
 DOBBY_ENDPOINT = "https://api.fireworks.ai/inference/v1/chat/completions"
 DOBBY_MODEL    = "accounts/sentientfoundation/models/dobby-unhinged-llama-3-3-70b-new"
 
